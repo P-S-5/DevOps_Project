@@ -1,81 +1,101 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <title>About Us Page</title>
+    <title>DevOps ToDo List - About</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            // Simulate fetching subscriber count
-            var subscriberCount = 105000; // Example count
-            $('#subscriberCount').text(subscriberCount);
+    <style>
+        body {
+            background-color: #f5f7fa;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
 
-            // Handle form submission
-            $('#joinForm').submit(function (event) {
-                event.preventDefault();
-                var email = $('#email').val();
-                if (email) {
-                    alert("Thank you for joining us, " + email + "!");
-                    $('#joinForm')[0].reset();
-                } else {
-                    alert("Please enter a valid email address.");
-                }
-            });
+        .main-container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
 
-            // Load additional content dynamically
-            $('#loadMore').click(function () {
-                $.ajax({
-                    url: 'additional_content.html', // URL to load additional content
-                    success: function (data) {
-                        $('#additionalContent').html(data);
-                    },
-                    error: function () {
-                        alert('Failed to load additional content.');
-                    }
-                });
-            });
-        });
-    </script>
+        .nav-tabs {
+            border-bottom: 2px solid #e9ecef;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        .nav-tabs > li > a {
+            color: #7f8c8d;
+            font-size: 16px;
+            font-weight: 600;
+            padding: 15px 30px;
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .nav-tabs > li > a:hover {
+            background-color: transparent;
+            color: #3498db;
+            border: none;
+        }
+
+        .nav-tabs > li.active > a,
+        .nav-tabs > li.active > a:focus,
+        .nav-tabs > li.active > a:hover {
+            color: #3498db;
+            border: none;
+            border-bottom: 3px solid #3498db;
+            background-color: transparent;
+        }
+
+        .about-content {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .about-title {
+            color: #2c3e50;
+            font-size: 2.5em;
+            font-weight: 700;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .about-text {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
-
 <body>
-    <div style="margin:6px;">
-        <nav class="navbar navbar-inverse navbar-static-top">
-            <div class="container">
-                <a class="navbar-brand" href="/">About DevOps Shack</a>
-                <ul class="nav navbar-nav">
-                    <li>
-                        <a href="/">Home</a>
-                    </li>
-                    <li class="active">
-                        <a href="/about">About</a>
-                    </li>
+    <div class="container">
+        <div class="main-container">
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation"><a href="/" aria-controls="home" role="tab">Home</a></li>
+                <li role="presentation" class="active"><a href="/about" aria-controls="about" role="tab">About</a></li>
+            </ul>
+
+            <div class="about-content">
+                <h1 class="about-title">About</h1>
+                <p class="about-text">This is a simple and elegant todo list application designed to help you manage your tasks effectively.</p>
+                <p class="about-text">Features include:</p>
+                <ul class="list-unstyled">
+                    <li>✓ Easy task management</li>
+                    <li>✓ Mark tasks as complete</li>
+                    <li>✓ Delete completed tasks</li>
+                    <li>✓ Persistent storage</li>
                 </ul>
             </div>
-        </nav>
-        <div class="jumbotron" style="padding:40px;">
-            <h1>About Us</h1>
-            <strong>
-                <p>DevOps Shack is a YouTube Channel created to share DevOps implementations and guide on using best
-                    practices to build & deploy applications.</p>
-            </strong>
-            <p>Join our community and stay updated with the latest in DevOps!</p>
-            <p>Current Subscribers: <span id="subscriberCount"></span></p>
-            <form id="joinForm" class="form-inline">
-                <div class="form-group">
-                    <label for="email">Email address:</label>
-                    <input type="email" class="form-control" id="email" placeholder="Enter your email">
-                </div>
-                <button type="submit" class="btn btn-primary">Join us</button>
-            </form>
-            <br>
-            <button id="loadMore" class="btn btn-info">Load More Content</button>
-            <div id="additionalContent" style="margin-top:20px;"></div>
         </div>
     </div>
 </body>
-
 </html>
